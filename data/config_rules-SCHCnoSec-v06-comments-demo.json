@@ -1,0 +1,691 @@
+{
+    "id":"1",
+    "contextName":"sample",
+    "rules":[
+		# Intended to match message 1: LwM2M registration
+        {
+            "ruleId":1,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["rd"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CONTENT_FORMAT","targetValue":["40"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_QUERY",		"targetValue":["lwm2m=1.1"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_QUERY",		"targetValue":["ep=demoMangoh1",
+																	   "ep=demoMangoh2",
+																	   "ep=demoMangoh3",
+																	   "ep=demoMangoh4",
+																	   "ep=demoMangoh5",
+																	   "ep=demoMangoh6",
+																	   "ep=demoMangoh7",
+																	   "ep=demoMangoh8"],	"cdactionFunction":"MappingSent",			"matchingOperator":{"type":"MATCHINDEX"},	"fieldLength":0,	"direction":"BI",	"fieldPosition":2},
+                     {"fieldName":"COAP_URI_QUERY",		"targetValue":["b=U"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":3},
+                     {"fieldName":"COAP_URI_QUERY",		"targetValue":["lt=300",
+																	   "lt=500",
+																	   "lt=1000",
+																	   "lt=2000",
+																	   "lt=3600",
+																	   "lt=7200",
+																	   "lt=10000",
+																	   "lt=86400"],			"cdactionFunction":"MappingSent",			"matchingOperator":{"type":"MATCHINDEX"},	"fieldLength":0,	"direction":"BI",	"fieldPosition":4}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 2: LwM2M registration ACK, Created
+        {
+            "ruleId":2,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["65"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_LOCATION_PATH",	"targetValue":["rd"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_LOCATION_PATH",	"targetValue":["xxxxxxxxxx"],		"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":80,	"direction":"BI",	"fieldPosition":2}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 3: Read battery level request
+        {
+            "ruleId":3,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["3"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":2},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["9"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":3},
+                     {"fieldName":"COAP_ACCEPT",		"targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 4: Read battery level response, ACK with Content
+		# Intended to match message 6: Read temperature response, ACK with Content
+		# Intended to match message 8: Read LED status response, ACK with Content
+        {
+            "ruleId":4,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["69"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CONTENT_FORMAT","targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 5: Read temperature request
+        {
+            "ruleId":5,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["3303"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":2},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["5700"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":3},
+                     {"fieldName":"COAP_ACCEPT",		"targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 7: Read LED status request
+        {
+            "ruleId":7,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["3311"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":2},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["5850"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":3},
+                     {"fieldName":"COAP_ACCEPT",		"targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 9: Write LED status request
+        {
+            "ruleId":9,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["3"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["3311"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":2},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["5850"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":3},
+                     {"fieldName":"COAP_CONTENT_FORMAT","targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 10: Write LED status response, ACK with Changed
+		# Intended to match message 15: LwM2M registration update response, ACK with Changed
+        {
+            "ruleId":10,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["68"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 11: Get Location object with Observe request
+        {
+            "ruleId":11,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_OBSERVE",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["6"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":2},
+                     {"fieldName":"COAP_ACCEPT",		"targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 12: Get Location object with Observe response, ACK with Content
+        {
+            "ruleId":12,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["69"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_OBSERVE",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CONTENT_FORMAT","targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 13: Location object Observe notification
+		# Beware that the Observe sequence number is variable length, and Acklio so far does not handle variable length arguments.
+        {
+            "ruleId":13,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["69"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_OBSERVE",		"targetValue":["0"],				"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CONTENT_FORMAT","targetValue":["0x2d16"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 14: LwM2M registration update request
+        {
+            "ruleId":14,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["rd"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["xxxxxxxxxx"],		"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":80,	"direction":"BI",	"fieldPosition":2}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 16: Request to stop Observe notifications, RST
+        {
+            "ruleId":16,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["3"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":[""],					"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 17: Request to delete LwM2M registration
+        {
+            "ruleId":17,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["rd"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":0,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_URI_PATH",		"targetValue":["xxxxxxxxxx"],		"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":80,	"direction":"BI",	"fieldPosition":2}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        },
+		# Intended to match message 18: Response for deleting LwM2M registration, ACK with Deleted
+        {
+            "ruleId":18,
+            "flows": [
+                {
+                   "flowId": 0,
+                   "ruleEntries": [
+                     {"fieldName":"IP4_VERSION",		"targetValue":["4"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_IHL",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4HeaderLength","matchingOperator":{"type":"IGNORE"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TOS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeIP4Length",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_ID",				"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FLAGS",			"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":3,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_FRAG_OFFSET",	"targetValue":["0"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":13,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_TTL",			"targetValue":["64"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_PROTOCOL",		"targetValue":["0x11"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeIP4Checksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_DEV_IP",			"targetValue":["192.168.2.2"],	"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"IP4_APP_IP",			"targetValue":["192.168.2.3"],		"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":32,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_DEV_PORT",		"targetValue":["56830"],			"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_APP_PORT",		"targetValue":["5683"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_LENGTH",			"targetValue":["0"],				"cdactionFunction":"ComputeUDPLength",		"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"UDP_CHECKSUM",		"targetValue":["0"],				"cdactionFunction":"ComputeUDPChecksum",	"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_VERSION",		"targetValue":["1"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TYPE",			"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":2,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN_LEN",		"targetValue":["2"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":4,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_CODE",			"targetValue":["66"],				"cdactionFunction":"NotSent",				"matchingOperator":{"type":"EQUAL"},		"fieldLength":8,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_MSG_ID",		"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1},
+                     {"fieldName":"COAP_TOKEN",			"targetValue":["0x0000"],			"cdactionFunction":"ValueSent",				"matchingOperator":{"type":"IGNORE"},		"fieldLength":16,	"direction":"BI",	"fieldPosition":1}
+                   ]
+                }
+            ],
+            
+            "stack":{
+                "isIPCompressed": true,
+                "isUDPCompressed": true,
+                "isIPv6": false,
+                "application": "COAP",
+                "stackType": "IP4_UDP_COAP",
+                "isICMP": false
+            }
+        }
+    ]
+}
